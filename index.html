@@ -1,0 +1,1362 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <title>GSPN | Card Game</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="description" content="GSPN Official Guide."/>
+  <meta property="og:title" content="GSPN"/>
+  <meta property="og:type" content="website"/>
+  <meta property="og:description" content="Porn industry card game"/>
+  <meta property="og:image" content="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <meta name="twitter:card" content="summary_large_image"/>
+  <meta name="twitter:title" content="GSPN"/>
+  <meta name="twitter:description" content="Porn industry card game"/>
+  <meta name="twitter:image" content="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <link rel="apple-touch-icon" sizes="180x180" href="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <link rel="icon" type="image/png" sizes="32x32" href="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <link rel="icon" type="image/png" sizes="16x16" href="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <link rel="shortcut icon" href="https://raw.githubusercontent.com/devanteyaps/commands/main/gsp.png"/>
+  <meta name="theme-color" content="#050505"/>
+  <link rel="stylesheet" href="style.css"/>
+</head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>GSPN card game · Command compendium</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,400;0,9..40,600;0,9..40,700;1,9..40,500&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --bg0: #050508;
+      --bg1: #0c0c12;
+      --card: rgba(20, 22, 32, 0.72);
+      --stroke: rgba(120, 140, 255, 0.18);
+      --text: #e8e8f0;
+      --muted: #8b8b9a;
+      --accent1: #6ae8ff;
+      --accent2: #b388ff;
+      --accent3: #ff4ecd;
+      --radius: 16px;
+      --font: "DM Sans", system-ui, sans-serif;
+      --mono: "JetBrains Mono", ui-monospace, monospace;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      min-height: 100vh;
+      font-family: var(--font);
+      color: var(--text);
+      background:
+        radial-gradient(ellipse 100% 80% at 50% -20%, rgba(106, 232, 255, 0.12), transparent 55%),
+        radial-gradient(ellipse 60% 50% at 100% 0%, rgba(179, 136, 255, 0.1), transparent 50%),
+        radial-gradient(ellipse 50% 40% at 0% 100%, rgba(255, 78, 205, 0.06), transparent 45%),
+        linear-gradient(180deg, var(--bg0) 0%, var(--bg1) 100%);
+    }
+    .wrap { max-width: 1120px; margin: 0 auto; padding: 2.5rem 1.25rem 4rem; }
+    header.hero {
+      text-align: center;
+      margin-bottom: 2.5rem;
+      padding: 2rem 1rem 2.5rem;
+      position: relative;
+    }
+    header.hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(106, 232, 255, 0.08), rgba(179, 136, 255, 0.06));
+      border-radius: var(--radius);
+      border: 1px solid var(--stroke);
+      pointer-events: none;
+    }
+    h1 {
+      position: relative;
+      font-size: clamp(1.75rem, 4vw, 2.4rem);
+      font-weight: 700;
+      letter-spacing: -0.03em;
+      margin: 0 0 0.5rem;
+      background: linear-gradient(120deg, #fff, var(--accent1) 40%, var(--accent2) 80%, #fff);
+      -webkit-background-clip: text;
+      background-clip: text;
+      color: transparent;
+    }
+    .tagline { position: relative; color: var(--muted); font-size: 1.05rem; max-width: 52ch; margin: 0 auto 1.25rem; line-height: 1.5; }
+    .pill-row { position: relative; display: flex; flex-wrap: wrap; gap: 0.5rem; justify-content: center; }
+    .pill {
+      font-size: 0.75rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      padding: 0.35rem 0.75rem;
+      border-radius: 999px;
+      border: 1px solid var(--stroke);
+      background: rgba(255,255,255,0.03);
+      color: var(--muted);
+    }
+    .search-wrap { position: relative; margin-top: 1.75rem; max-width: 420px; margin-left: auto; margin-right: auto; }
+    .search-wrap input {
+      width: 100%;
+      padding: 0.85rem 1rem 0.85rem 2.75rem;
+      font-family: var(--font);
+      font-size: 0.95rem;
+      color: var(--text);
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 999px;
+      outline: none;
+      transition: border-color 0.2s, box-shadow 0.2s;
+    }
+    .search-wrap input:focus {
+      border-color: rgba(106, 232, 255, 0.5);
+      box-shadow: 0 0 0 3px rgba(106, 232, 255, 0.12);
+    }
+    .search-wrap::before { content: "⌕"; position: absolute; left: 1rem; top: 50%; transform: translateY(-50%); color: var(--muted); font-size: 1.1rem; pointer-events: none; }
+    .intro {
+      display: grid;
+      gap: 1rem;
+      margin-bottom: 2.5rem;
+    }
+    @media (min-width: 768px) { .intro { grid-template-columns: 1fr 1fr; } }
+    .intro-card {
+      padding: 1.25rem 1.4rem;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: var(--radius);
+      backdrop-filter: blur(12px);
+    }
+    .intro-card h3 { margin: 0 0 0.6rem; font-size: 0.8rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent1); }
+    .intro-card p { margin: 0; color: var(--muted); line-height: 1.6; font-size: 0.95rem; }
+    .ladder { font-family: var(--mono); font-size: 0.8rem; color: #c4c4d4; line-height: 1.7; margin: 0.5rem 0 0; }
+    .block { margin-bottom: 2.75rem; }
+    .block-title { display: flex; align-items: center; gap: 0.5rem; font-size: 1.15rem; font-weight: 600; margin: 0 0 0.25rem; letter-spacing: -0.02em; }
+    .glow { width: 6px; height: 6px; border-radius: 50%; background: linear-gradient(135deg, var(--accent1), var(--accent3)); box-shadow: 0 0 12px var(--accent2); }
+    .block-meta { color: var(--muted); font-size: 0.85rem; margin: 0 0 1rem; }
+    .grid { display: grid; gap: 1rem; grid-template-columns: 1fr; }
+    @media (min-width: 640px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    @media (min-width: 1000px) { .grid { grid-template-columns: repeat(2, 1fr); } }
+    .cmd {
+      padding: 1.1rem 1.2rem;
+      background: var(--card);
+      border: 1px solid var(--stroke);
+      border-radius: 12px;
+      transition: border-color 0.2s, transform 0.2s;
+    }
+    .cmd:hover { border-color: rgba(106, 232, 255, 0.35); transform: translateY(-2px); }
+    .cmd-path code {
+      font-family: var(--mono);
+      font-size: 0.82rem;
+      color: var(--accent1);
+      word-break: break-word;
+    }
+    .cmd-desc { color: #b8b8c8; font-size: 0.9rem; margin: 0.6rem 0; line-height: 1.5; }
+    .cmd-guide { border-top: 1px solid rgba(255,255,255,0.06); padding-top: 0.75rem; margin-top: 0.25rem; }
+    .guide-label { display: block; font-size: 0.65rem; text-transform: uppercase; letter-spacing: 0.12em; color: var(--accent2); margin-bottom: 0.35rem; }
+    .cmd-guide p { margin: 0; font-size: 0.85rem; color: #9a9aaa; line-height: 1.55; }
+    .cmd.hidden { display: none; }
+    .block.empty .grid { min-height: 0; }
+    footer { text-align: center; color: var(--muted); font-size: 0.8rem; margin-top: 2rem; padding-top: 1.5rem; border-top: 1px solid var(--stroke); }
+
+    .cmd-usage { margin: 0.5rem 0 0.35rem; padding: 0.65rem 0.75rem; border-radius: 8px;
+      background: rgba(106, 232, 255, 0.06); border: 1px solid rgba(106, 232, 255, 0.15); }
+    .cmd-usage p { margin: 0.35rem 0 0; font-size: 0.82rem; color: #a5a5b5; line-height: 1.5; }
+    .usage-label { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 0.14em; color: var(--accent1); }
+    .cmd-usage code { font-family: var(--mono); font-size: 0.78rem; color: #7ee8ff; background: rgba(0,0,0,0.25); padding: 0.1rem 0.35rem; border-radius: 4px; }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header class="hero">
+      <h1>GSPN card game</h1>
+      <p class="tagline">Full slash-command reference for the GSPN card system: pull packs, build your binder, trade, run the shop sim, and chase rarities—straight from the bot code. Each card includes a <strong>Usage</strong> line with example options (what to type or select in Discord).</p>
+      <div class="pill-row">
+        <span class="pill">GSPN</span>
+        <span class="pill">Discord bot</span>
+        <span class="pill">89 commands</span>
+      </div>
+      <div class="search-wrap">
+        <input type="search" id="q" placeholder="Filter commands (e.g. trade, wheel, binder…)" autocomplete="off" />
+      </div>
+    </header>
+
+    <div class="intro">
+      <div class="intro-card">
+        <h3>Start here</h3>
+        <p><strong>Wallet credits</strong> let you open shop packs, pay grading, and use the rarity upgrader. <strong>Cards</strong> are unique copies with a rarity tier (Common through Ultra Rare and beyond), special event tags, and sometimes effects during events.</p>
+        <p class="ladder">Typical GSPN ladder: C &lt; S &lt; R &lt; SR &lt; SSR &lt; SSR+ &lt; UR &lt; UR+ (plus event tiers like HOF / CHRC on special cards). Exact odds are pack- and event-dependent.</p>
+      </div>
+      <div class="intro-card">
+        <h3>Flow</h3>
+        <p>
+          1) Earn credits (rewards, wheel, selling dupes, passive job).<br/>
+          2) <strong>/gspn_cards</strong> — open <code>pack_open</code>, check <code>inventory</code> / <code>binder</code>, <code>view</code> a card.<br/>
+          3) <strong>/shop</strong> under <code>/gspn_cards</code> buys packs; <strong>/gspn_market</strong> is player-to-player sales.<br/>
+          4) Use <strong>/gspn_cards extras help</strong> in Discord for the live interactive help panel.
+        </p>
+      </div>
+    </div>
+
+    
+            <section class="block" id="cat-core-gspn-cards">
+              <h2 class="block-title"><span class="glow"></span>Core (/gspn_cards)</h2>
+              <p class="block-meta">17 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards binder view your card binder by rarity or model core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards binder</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional: <code>model</code> / <code>rarity</code> / <code>page</code> — use what Discord shows to filter your pages.</p>
+                  </div>
+                  <p class="cmd-desc">View your card binder by rarity or model</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards buy_card buy a single card of a specific rarity core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards buy_card</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>rarity</code> (and any price/model fields) exactly as the options list, then confirm purchase.</p>
+                  </div>
+                  <p class="cmd-desc">Buy a single card of a specific rarity</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards give gift a card to another user. admins can gift from the catalog without owning the card. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards give</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>user</code> (or mention) and <code>card</code> by ID or name so the gift routes to the right copy.</p>
+                  </div>
+                  <p class="cmd-desc">Gift a card to another user. Admins can gift from the catalog without owning the card.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards grade authenticate &amp; slab-grade one gspn card copy (gsp case, psa-style subgrades) core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards grade</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Select the owned <code>card</code> / copy ID, confirm wallet spend — slab appears under <code>/gspn_cards slabs</code>.</p>
+                  </div>
+                  <p class="cmd-desc">Authenticate &amp; slab-grade one GSPN card copy (GSP case, PSA-style subgrades)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards hof add hall of fame cards (image, url, or zip). core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards hof</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Attach image / ZIP or paste URL in the follow-up, as the bot requests for HOF import.</p>
+                  </div>
+                  <p class="cmd-desc">Add Hall of Fame cards (image, url, or zip).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards holiday get 1 random holiday-themed card (halloween or xmas). uses the event set if an admin has built one. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards holiday</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Run and pick Halloween vs Christmas if asked — spend/pool is whatever the current event rules show.</p>
+                  </div>
+                  <p class="cmd-desc">Get 1 random holiday-themed card (Halloween or Xmas). Uses the event set if an admin has built one.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards inventory show gspn card inventory (25 per page) core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards inventory</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Use <code>page</code> to move through 25-up lists; add model/rarity if those filters exist.</p>
+                  </div>
+                  <p class="cmd-desc">Show GSPN card inventory (25 per page)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards pack_open open a gspn card pack. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards pack_open</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Choose the pack in your inventory from the list (type or dropdown), then confirm the rip animation.</p>
+                  </div>
+                  <p class="cmd-desc">Open a GSPN card pack.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards rename rename one owned card and optionally fix its set/album globally. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards rename</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pass <code>card</code> id and the new <code>name</code> / set fix flags the form exposes.</p>
+                  </div>
+                  <p class="cmd-desc">Rename one owned card and optionally fix its set/album globally.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards replace broken (gradient) cards for a model — choose replace, repair, or sell (2×) core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards replace</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>model</code> (or the broken-tile target), then choose Replace, Repair, or Sell on the buttons.</p>
+                  </div>
+                  <p class="cmd-desc">Broken (gradient) cards for a model — choose Replace, Repair, or Sell (2×)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards sell sell a gspn card by id. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards sell</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>card_id</code> (or paste from inventory) to sell one copy for guide/listed value.</p>
+                  </div>
+                  <p class="cmd-desc">Sell a GSPN card by ID.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards sell_all sell all cards in your inventory (optional: only cards matching a model name) core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards sell_all</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional: <code>model</code> substring to only liquidate that model — omit to nuke the whole bag (careful).</p>
+                  </div>
+                  <p class="cmd-desc">Sell all cards in your inventory (optional: only cards matching a model name)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards sell_recent sell every copy from your most recent pack open (guide value each, by copy id). core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards sell_recent</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>No args in many builds — bulk-sells the last pack’s copies by their copy ids.</p>
+                  </div>
+                  <p class="cmd-desc">Sell every copy from your most recent pack open (guide value each, by copy id).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards slabs browse your gsp-graded gspn card slabs (mini case grid, 6 per page) core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards slabs</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Use <code>page</code> for the 6-up slab case grid; pick a card to zoom details.</p>
+                  </div>
+                  <p class="cmd-desc">Browse your GSP-graded GSPN card slabs (mini case grid, 6 per page)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards trade trade cards and/or gspn credits with another user (they tap accept). core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards trade</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set your side (cards + optional credits) and the partner user — they tap &lt;strong&gt;Accept&lt;/strong&gt; in the same channel.</p>
+                  </div>
+                  <p class="cmd-desc">Trade cards and/or GSPN credits with another user (they tap Accept).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Sends a request the other person accepts; both sides must confirm. Items and credits are swapped atomically.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards view view a card by name/id or model; optional album:true binder for one set core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards view</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>name</code> or <code>id</code> or <code>model</code> — for one album, some builds accept <code>album:true</code> style flags.</p>
+                  </div>
+                  <p class="cmd-desc">View a card by name/ID or model; optional album:true binder for one set</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards wallet show your gspn wallet balance. core (/gspn_cards)">
+                  <div class="cmd-path"><code>/gspn_cards wallet</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Run with no options to see balance; use before big buys, upgrades, or market purchases.</p>
+                  </div>
+                  <p class="cmd-desc">Show your GSPN wallet balance.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-shop-under-gspn-cards">
+              <h2 class="block-title"><span class="glow"></span>Shop under /gspn_cards</h2>
+              <p class="block-meta">3 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards shop browse browse standard, premium, and rarity-case packs (cutout zip packs use /gspn_cutout shop). shop under /gspn_cards">
+                  <div class="cmd-path"><code>/gspn_cards shop browse</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Open shop categories from the list (Standard / Premium / cases) and confirm the price shown.</p>
+                  </div>
+                  <p class="cmd-desc">Browse standard, premium, and rarity-case packs (cutout ZIP packs use /gspn_cutout shop).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards shop models 7 cards for one model: optional fixed rarity or random standard odds ($10k / $15k). shop under /gspn_cards">
+                  <div class="cmd-path"><code>/gspn_cards shop models</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>model</code> and optional <code>rarity</code> (or random) — charges the model-pack price the bot shows.</p>
+                  </div>
+                  <p class="cmd-desc">7 cards for one model: optional fixed rarity or random Standard odds ($10k / $15k).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards shop seasonal halloween (hc) and christmas (chrc) event packs — uses your admin-built holiday card sets. shop under /gspn_cards">
+                  <div class="cmd-path"><code>/gspn_cards shop seasonal</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pick HC (Halloween) or CHRC (Christmas) pack — requires the admin holiday sets to exist.</p>
+                  </div>
+                  <p class="cmd-desc">Halloween (HC) and Christmas (CHRC) event packs — uses your admin-built holiday card sets.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-quick-sell">
+              <h2 class="block-title"><span class="glow"></span>Quick sell</h2>
+              <p class="block-meta">1 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_sell duplicates sell duplicate gspn copies while keeping one best copy per card/art group. quick sell">
+                  <div class="cmd-path"><code>/gspn_sell duplicates</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional <code>model</code> to only dedupe that model — otherwise sells extras and keeps the best per art group.</p>
+                  </div>
+                  <p class="cmd-desc">Sell duplicate GSPN copies while keeping one best copy per card/art group.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-themed-holiday">
+              <h2 class="block-title"><span class="glow"></span>Themed &amp; holiday</h2>
+              <p class="block-meta">6 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_holiday binder holiday binder: ``holiday_`` event cards + hc/chrc only (no other event cards) themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_holiday binder</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Same as normal binder but filters to <code>holiday_</code> / HC / CHRC cards only.</p>
+                  </div>
+                  <p class="cmd-desc">Holiday binder: ``holiday_`` event cards + HC/CHRC only (no other event cards)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_holiday card get 1 random holiday-themed card (halloween or xmas). themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_holiday card</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Free pull / holiday card — follow rarity or theme choice if a dialog appears.</p>
+                  </div>
+                  <p class="cmd-desc">Get 1 random holiday-themed card (Halloween or Xmas).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_holiday clear [admin] empty holiday event json + purge hc/chrc copies from inventories. themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_holiday clear</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Admin: purges the holiday event JSON and HC/CHRC from inventories — use only when resetting an event.</p>
+                  </div>
+                  <p class="cmd-desc">[Admin] Empty holiday event JSON + purge HC/CHRC copies from inventories.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Staff-only. Requires appropriate Discord permissions. Alters data, spawns items, or posts server-wide.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_shop holiday holiday shop: hc/chrc event packs, $10k model strips, and notes for signature (sgn) packs. themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_shop holiday</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Browse HC/CHRC packs, $10k strips, SGN notes — pick product then confirm price/case.</p>
+                  </div>
+                  <p class="cmd-desc">Holiday shop: HC/CHRC event packs, $10k model strips, and notes for Signature (SGN) packs.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_shop studios 7 cards from albums/sets matching studio text (e.g. brazzers, ultimate surrender). themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_shop studios</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Type studio text, e.g. <code>Brazzers</code>, to pull 7 cards from matching catalog sets.</p>
+                  </div>
+                  <p class="cmd-desc">7 cards from albums/sets matching studio text (e.g. Brazzers, Ultimate Surrender).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_shop upgrades upgrade shop: bulk rarity jumps, effects, neon borders, + /gspn_upgrade links (wallet). themed &amp; holiday">
+                  <div class="cmd-path"><code>/gspn_shop upgrades</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Links rarity bulk, effects, neon borders, and <code>/gspn_upgrade</code> from one storefront.</p>
+                  </div>
+                  <p class="cmd-desc">Upgrade shop: bulk rarity jumps, effects, neon borders, + /gspn_upgrade links (wallet).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-cutout-cards-bg">
+              <h2 class="block-title"><span class="glow"></span>Cutout cards &amp; BG</h2>
+              <p class="block-meta">5 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cutout background set or clear your image behind cutout windows (your binder and /gspn_cutout pull renders). cutout cards &amp; bg">
+                  <div class="cmd-path"><code>/gspn_cutout background</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Upload or URL your backdrop image, or <code>clear</code> to remove — used behind cutout renders.</p>
+                  </div>
+                  <p class="cmd-desc">Set or clear your image behind cutout windows (your binder and /gspn_cutout pull renders).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cutout force_cutout use the magazine cutout art window (inner background) even when a card has no bg_cutout flag. cutout cards &amp; bg">
+                  <div class="cmd-path"><code>/gspn_cutout force_cutout</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Toggle the magazine/cutout window even when a card has no <code>bg_cutout</code> flag (per-bot rules).</p>
+                  </div>
+                  <p class="cmd-desc">Use the magazine cutout art window (inner background) even when a card has no bg_cutout flag.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cutout pull free cutout-pack pull: unique master cards per request, full render, added to inventory. cutout cards &amp; bg">
+                  <div class="cmd-path"><code>/gspn_cutout pull</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Free once-per rules — claims a cutout master into inventory with the full render pipeline.</p>
+                  </div>
+                  <p class="cmd-desc">Free cutout-pack pull: unique master cards per request, full render, added to inventory.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cutout remove [admin] remove a cutout pack, delete its cards, and strip them from all inventories. cutout cards &amp; bg">
+                  <div class="cmd-path"><code>/gspn_cutout remove</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Admin: identify the cutout pack to delete from the pool and all players’ inventories.</p>
+                  </div>
+                  <p class="cmd-desc">[Admin] Remove a cutout pack, delete its cards, and strip them from all inventories.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Staff-only. Requires appropriate Discord permissions. Alters data, spawns items, or posts server-wide.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cutout shop browse and open cutout zip packs (wallet) — separate from the main gspn shop. cutout cards &amp; bg">
+                  <div class="cmd-path"><code>/gspn_cutout shop</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pick a ZIP / cutout pack from the list, pay wallet, open like a normal pack flow.</p>
+                  </div>
+                  <p class="cmd-desc">Browse and open cutout ZIP packs (wallet) — separate from the main GSPN shop.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-wallet-borders">
+              <h2 class="block-title"><span class="glow"></span>Wallet borders</h2>
+              <p class="block-meta">1 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_border presets lists valid neon border style ids for the upgrade shop + how preview/buy works. wallet borders">
+                  <div class="cmd-path"><code>/gspn_border presets</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Run to list valid border IDs; in the border shop, pick a style name from that list when buying.</p>
+                  </div>
+                  <p class="cmd-desc">Lists valid neon border style IDs for the upgrade shop + how preview/buy works.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-market-auctions">
+              <h2 class="block-title"><span class="glow"></span>Market &amp; auctions</h2>
+              <p class="block-meta">9 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_auction bid place a bid on an active gspn auction market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_auction bid</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Use while an auction is live: set <code>amount</code> (or the bid field) to outbid the current high bid.</p>
+                  </div>
+                  <p class="cmd-desc">Place a bid on an active GSPN auction</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_auction close [admin] force-close an active auction now market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_auction close</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Staff: pick the active <code>auction</code> / channel the bot shows, then confirm to end early.</p>
+                  </div>
+                  <p class="cmd-desc">[Admin] Force-close an active auction now</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Staff-only. Requires appropriate Discord permissions. Alters data, spawns items, or posts server-wide.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_auction start [admin] start a public gspn auction market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_auction start</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Staff: set starting price, duration, and the card (or follow the modals) then post the auction to the channel.</p>
+                  </div>
+                  <p class="cmd-desc">[Admin] Start a public GSPN auction</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Staff-only. Requires appropriate Discord permissions. Alters data, spawns items, or posts server-wide.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market buy buy a card from the market market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market buy</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>listing</code> id or the card slot the embed shows, confirm price + wallet.</p>
+                  </div>
+                  <p class="cmd-desc">Buy a card from the market</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market list list current market listings market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market list</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional filters — often shows newest listings server-wide.</p>
+                  </div>
+                  <p class="cmd-desc">List current market listings</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market listings show market listings. optionally show listings for a specific user. market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market listings</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Add <code>user</code> to scope listings to one seller.</p>
+                  </div>
+                  <p class="cmd-desc">Show market listings. Optionally show listings for a specific user.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market remove remove a card listing from the market and return it to the seller&#x27;s inventory. market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market remove</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Cancels your active listing so the copy returns to inventory.</p>
+                  </div>
+                  <p class="cmd-desc">Remove a card listing from the market and return it to the seller&#x27;s inventory.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market sell list a card for sale (by name, id, or binder number) market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market sell</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>card</code> by id / name / binder # and <code>price</code> (fields as the bot shows).</p>
+                  </div>
+                  <p class="cmd-desc">List a card for sale (by name, ID, or binder number)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_market sell_model bulk-list all owned cards matching a model name market &amp; auctions">
+                  <div class="cmd-path"><code>/gspn_market sell_model</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Type a <code>model</code> string to bulk-list every owned copy of that model.</p>
+                  </div>
+                  <p class="cmd-desc">Bulk-list all owned cards matching a model name</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-events-daily-rewards">
+              <h2 class="block-title"><span class="glow"></span>Events &amp; daily rewards</h2>
+              <p class="block-meta">5 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_event binder view only your event cards in binder format events &amp; daily rewards">
+                  <div class="cmd-path"><code>/gspn_event binder</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Event-only cards in binder layout; use <code>page</code> if offered.</p>
+                  </div>
+                  <p class="cmd-desc">View only your event cards in binder format</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Shows cards in a paginated grid (binder view). You can often filter by model, rarity, or set depending on the command options.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_event next show current event and next random event start time events &amp; daily rewards">
+                  <div class="cmd-path"><code>/gspn_event next</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Shows the active schedule line (current event and next start window).</p>
+                  </div>
+                  <p class="cmd-desc">Show current event and next random event start time</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_rewards daily claim your daily reward events &amp; daily rewards">
+                  <div class="cmd-path"><code>/gspn_rewards daily</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Once per daily reset — claim straight from the button response.</p>
+                  </div>
+                  <p class="cmd-desc">Claim your daily reward</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Cooldowns apply. Claim when available; wheel spins grant credits and/or cases per the current reward table.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_rewards daily_wheel spin the daily gspn wheel (credits + gspn rarity cases) events &amp; daily rewards">
+                  <div class="cmd-path"><code>/gspn_rewards daily_wheel</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>One spin per rules — can grant credits and rarity-case style rewards.</p>
+                  </div>
+                  <p class="cmd-desc">Spin the daily GSPN wheel (credits + GSPN rarity cases)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Cooldowns apply. Claim when available; wheel spins grant credits and/or cases per the current reward table.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_rewards weekly claim your weekly reward events &amp; daily rewards">
+                  <div class="cmd-path"><code>/gspn_rewards weekly</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Once per week — claim from the same rewards group when available.</p>
+                  </div>
+                  <p class="cmd-desc">Claim your weekly reward</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Cooldowns apply. Claim when available; wheel spins grant credits and/or cases per the current reward table.</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-job-sim-upgrader">
+              <h2 class="block-title"><span class="glow"></span>Job sim &amp; upgrader</h2>
+              <p class="block-meta">21 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_job buy_upgrade purchase the next level of a shop meta-upgrade (wallet cost, permanent). job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job buy_upgrade</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>After <code>/gspn_job start</code>, buy the next level of a meta-upgrade from the menu.</p>
+                  </div>
+                  <p class="cmd-desc">Purchase the next level of a shop meta-upgrade (wallet cost, permanent).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Moves cards or credits between users; sales tax / fees (if any) are applied by the bot. Check wallet balance first.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job chain view your full business chain: all branches, staff, and totals. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job chain</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Read-only: all branches, staff totals, and chain-wide money stats.</p>
+                  </div>
+                  <p class="cmd-desc">View your full business chain: all branches, staff, and totals.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job claim claim passive shop earnings into your wallet. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job claim</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Moves passive earnings from the sim into your <code>/gspn_cards wallet</code>.</p>
+                  </div>
+                  <p class="cmd-desc">Claim passive shop earnings into your wallet.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job employees view your current branch staff and employee shop. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job employees</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Lists staff on the &lt;strong&gt;selected branch&lt;/strong&gt; and the employee shop.</p>
+                  </div>
+                  <p class="cmd-desc">View your current branch staff and employee shop.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job fire fire employees from the selected branch. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job fire</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Enter slot / employee id the embed lists for the current branch.</p>
+                  </div>
+                  <p class="cmd-desc">Fire employees from the selected branch.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job hire hire employees for the selected branch. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job hire</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pick a role from the employee shop, pay cost, assigns to <code>select_branch</code> target.</p>
+                  </div>
+                  <p class="cmd-desc">Hire employees for the selected branch.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job leaderboards top chains by business revenue, staff count, and branch count. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job leaderboards</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>No args — top chains by revenue, staff, branch count.</p>
+                  </div>
+                  <p class="cmd-desc">Top chains by business revenue, staff count, and branch count.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job open_branch open a new store location in your chain. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job open_branch</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pays the branch fee, creates a new location in your chain.</p>
+                  </div>
+                  <p class="cmd-desc">Open a new store location in your chain.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Consumes a pack from inventory or a shop flow; random pulls use the bot’s rarity weights. Animations may play before the reveal.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job rename_branch rename one of your branches. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job rename_branch</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>branch</code> number + <code>name</code> from <code>/gspn_job chain</code>.</p>
+                  </div>
+                  <p class="cmd-desc">Rename one of your branches.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job rename_chain rename your overall store chain. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job rename_chain</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Renames the whole chain (cosmetic, shown on status).</p>
+                  </div>
+                  <p class="cmd-desc">Rename your overall store chain.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job restock buy simulated stock for your passive shop. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job restock</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Buy stock for the &lt;strong&gt;selected&lt;/strong&gt; branch; uses wallet or auto rules.</p>
+                  </div>
+                  <p class="cmd-desc">Buy simulated stock for your passive shop.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job sales view recent passive shop sales log. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job sales</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Scroll recent synthetic sales for debugging bragging.</p>
+                  </div>
+                  <p class="cmd-desc">View recent passive shop sales log.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job select_branch select which branch your job commands target. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job select_branch</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>branch</code> index so status/restock/hire target that store.</p>
+                  </div>
+                  <p class="cmd-desc">Select which branch your job commands target.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job shop_tag cosmetic shop sign — shown only on /gspn_job status; does not change earnings or simulation. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job shop_tag</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Cosmetic string shown on <code>/gspn_job status</code> only.</p>
+                  </div>
+                  <p class="cmd-desc">Cosmetic shop sign — shown only on /gspn_job status; does not change earnings or simulation.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job start start a passive shop job (card or magazine). job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job start</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Choose card shop vs magazine sim if prompted, then the passive timer begins.</p>
+                  </div>
+                  <p class="cmd-desc">Start a passive shop job (card or magazine).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job status view your passive shop status and earnings. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job status</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Shows balance, stock, autodeposit, and the branch you have selected.</p>
+                  </div>
+                  <p class="cmd-desc">View your passive shop status and earnings.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Simulated shop: ticks over time, restock, staff, and branches affect earnings. Claim moves money into your wallet.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job upgrades view passive shop meta-upgrades (permanent bonuses, auto-deposit, auto-restock). job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job upgrades</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Short list of meta-upgrades; pair with <code>buy_upgrade</code>.</p>
+                  </div>
+                  <p class="cmd-desc">View passive shop meta-upgrades (permanent bonuses, auto-deposit, auto-restock).</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_job view_upgrades detailed upgrade sheet: levels, next prices, and what each line does for your shop. job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_job view_upgrades</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Long sheet: levels, next prices, what each line does.</p>
+                  </div>
+                  <p class="cmd-desc">Detailed upgrade sheet: levels, next prices, and what each line does for your shop.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_upgrade daily once per day: free random multi-step rarity upgrade (chance to hit ur) job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_upgrade daily</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Once per day — free random multi-step rarity climb (odds in <code>info</code>).</p>
+                  </div>
+                  <p class="cmd-desc">Once per day: free random multi-step rarity upgrade (chance to hit UR)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Cooldowns apply. Claim when available; wheel spins grant credits and/or cases per the current reward table.</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_upgrade info card upgrader — prices, ladder, and daily odds job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_upgrade info</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Read-only: credit prices per tier, ladder, daily reset rules.</p>
+                  </div>
+                  <p class="cmd-desc">Card upgrader — prices, ladder, and daily odds</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_upgrade paid pay credits to upgrade a card by one rarity tier (max ur) job sim &amp; upgrader">
+                  <div class="cmd-path"><code>/gspn_upgrade paid</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Select owned <code>card</code>, pay credits to go up <strong>one</strong> tier (cap UR).</p>
+                  </div>
+                  <p class="cmd-desc">Pay credits to upgrade a card by one rarity tier (max UR)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-custom-albums-gspn-cards-albums">
+              <h2 class="block-title"><span class="glow"></span>Custom albums (/gspn_cards albums)</h2>
+              <p class="block-meta">4 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards albums add add more owned cards to an existing custom album custom albums (/gspn_cards albums)">
+                  <div class="cmd-path"><code>/gspn_cards albums add</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Album name + list of <code>card</code> ids to append to that custom album.</p>
+                  </div>
+                  <p class="cmd-desc">Add more owned cards to an existing custom album</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards albums create create/replace a custom album from multiple owned cards custom albums (/gspn_cards albums)">
+                  <div class="cmd-path"><code>/gspn_cards albums create</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Name + many ids — overwrites that album with the new list.</p>
+                  </div>
+                  <p class="cmd-desc">Create/replace a custom album from multiple owned cards</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards albums remove remove cards from a custom album custom albums (/gspn_cards albums)">
+                  <div class="cmd-path"><code>/gspn_cards albums remove</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Album + ids to strip out (does not delete cards from inventory).</p>
+                  </div>
+                  <p class="cmd-desc">Remove cards from a custom album</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards albums view view one of your custom gspn albums custom albums (/gspn_cards albums)">
+                  <div class="cmd-path"><code>/gspn_cards albums view</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Pick album name, optional <code>page</code> for long albums.</p>
+                  </div>
+                  <p class="cmd-desc">View one of your custom GSPN albums</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-catalog-albums-gspn-albums">
+              <h2 class="block-title"><span class="glow"></span>Catalog albums (/gspn_albums)</h2>
+              <p class="block-meta">1 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_albums complete catalog albums/sets you are closest to finishing (not custom /gspn_cards albums) catalog albums (/gspn_albums)">
+                  <div class="cmd-path"><code>/gspn_albums complete</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Run as-is, or add search/page options if shown — lists sets you are closest to finishing.</p>
+                  </div>
+                  <p class="cmd-desc">Catalog albums/sets you are closest to finishing (not custom /gspn_cards albums)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-favorites">
+              <h2 class="block-title"><span class="glow"></span>Favorites</h2>
+              <p class="block-meta">4 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards favorites fav add one owned card to your gspn favorites (id or name) favorites">
+                  <div class="cmd-path"><code>/gspn_cards favorites fav</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Set <code>card</code> by id or partial name; must be owned.</p>
+                  </div>
+                  <p class="cmd-desc">Add one owned card to your GSPN favorites (ID or name)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards favorites favorites alias: add one owned card to favorites (same as /gspn_cards favorites fav) favorites">
+                  <div class="cmd-path"><code>/gspn_cards favorites favorites</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Same as <code>fav</code> in most builds (alias).</p>
+                  </div>
+                  <p class="cmd-desc">Alias: add one owned card to favorites (same as /gspn_cards favorites fav)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards favorites list_favs list your gspn favorite cards favorites">
+                  <div class="cmd-path"><code>/gspn_cards favorites list_favs</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Paginate with <code>page</code> if the bot offers it.</p>
+                  </div>
+                  <p class="cmd-desc">List your GSPN favorite cards</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards favorites unfav remove one card from your gspn favorites favorites">
+                  <div class="cmd-path"><code>/gspn_cards favorites unfav</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Remove one id from the favorites set.</p>
+                  </div>
+                  <p class="cmd-desc">Remove one card from your GSPN favorites</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-help-extras">
+              <h2 class="block-title"><span class="glow"></span>Help &amp; extras</h2>
+              <p class="block-meta">4 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards extras effects view your discovered card effects help &amp; extras">
+                  <div class="cmd-path"><code>/gspn_cards extras effects</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Lists cosmetic/effect flags you have discovered.</p>
+                  </div>
+                  <p class="cmd-desc">View your discovered card effects</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards extras help open the interactive gspn help panel. help &amp; extras">
+                  <div class="cmd-path"><code>/gspn_cards extras help</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Interactive buttons — use in-server for live links.</p>
+                  </div>
+                  <p class="cmd-desc">Open the interactive GSPN help panel.</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards extras privacy toggle inventory privacy help &amp; extras">
+                  <div class="cmd-path"><code>/gspn_cards extras privacy</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Toggles whether leaderboard/stats can show your collection.</p>
+                  </div>
+                  <p class="cmd-desc">Toggle inventory privacy</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_cards extras recent list gspn cards you pulled in a time window (uses pull timestamps) help &amp; extras">
+                  <div class="cmd-path"><code>/gspn_cards extras recent</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional <code>hours</code> or time window to filter pulls.</p>
+                  </div>
+                  <p class="cmd-desc">List GSPN cards you pulled in a time window (uses pull timestamps)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-tools">
+              <h2 class="block-title"><span class="glow"></span>Tools</h2>
+              <p class="block-meta">1 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_cards tools trade_search suggest trades: your duplicate ids they are missing, and vice versa tools">
+                  <div class="cmd-path"><code>/gspn_cards tools trade_search</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Mention/ID a partner to print duplicate ↔ missing suggestions.</p>
+                  </div>
+                  <p class="cmd-desc">Suggest trades: your duplicate IDs they are missing, and vice versa</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Sends a request the other person accepts; both sides must confirm. Items and credits are swapped atomically.</p>
+                  </div>
+                </article></div>
+            </section>
+            <section class="block" id="cat-profile-stats">
+              <h2 class="block-title"><span class="glow"></span>Profile &amp; stats</h2>
+              <p class="block-meta">7 command(s)</p>
+              <div class="grid">
+                <article class="cmd" data-search="/gspn_achievements badges collection milestones (computed live from your inventory) profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_achievements badges</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Open from slash menu, submit empty or use filters if the bot offers milestone tiers.</p>
+                  </div>
+                  <p class="cmd-desc">Collection milestones (computed live from your inventory)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_favs favorite_view slideshow through your favorites with full card renders (prev / next) profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_favs favorite_view</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Prev/Next through favorites with full renders.</p>
+                  </div>
+                  <p class="cmd-desc">Slideshow through your favorites with full card renders (Prev / Next)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_info model show how many images the bot has for a model profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_info model</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Type <code>model</code> / slug — returns image count from cache.</p>
+                  </div>
+                  <p class="cmd-desc">Show how many images the bot has for a model</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_leaderboard board global leaderboard (respects inventory privacy) profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_leaderboard board</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Respects <code>privacy</code> — shows public standings.</p>
+                  </div>
+                  <p class="cmd-desc">Global leaderboard (respects inventory privacy)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_progress progress your collection totals, rarity mix, top models, event pulls, catalog completion % profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_progress progress</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>No args: totals, rarity pie, top models, completion % snapshot.</p>
+                  </div>
+                  <p class="cmd-desc">Your collection totals, rarity mix, top models, event pulls, catalog completion %</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_showcase flex image grid of your rarest / best slab / event-highlight cards (top picks) profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_showcase flex</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Optional filters for rarest / slab / event highlights grid.</p>
+                  </div>
+                  <p class="cmd-desc">Image grid of your rarest / best slab / event-highlight cards (top picks)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>Grading puts a case/slab on a copy; slabs show in the slabs gallery. Costs wallet credits (see in-bot pricing).</p>
+                  </div>
+                </article>
+                <article class="cmd" data-search="/gspn_wiki model gspn profile: model stats and bio from the catalog page (no gallery fetch) profile &amp; stats">
+                  <div class="cmd-path"><code>/gspn_wiki model</code></div>
+                  <div class="cmd-usage">
+                    <span class="usage-label">Usage</span>
+                    <p>Model name — pulls bio/stats from the external catalog page, not a gallery.</p>
+                  </div>
+                  <p class="cmd-desc">GSPN profile: model stats and bio from the catalog page (no gallery fetch)</p>
+                  <div class="cmd-guide">
+                    <span class="guide-label">How it works</span>
+                    <p>What you get matches the command description. Use optional arguments in Discord for filters (model, ID, page, etc.).</p>
+                  </div>
+                </article></div>
+            </section>
+
+    <footer>Generated for local reference. Slash paths use Discord&rsquo;s <code>group name</code> (slash groups as registered in Discord). 89 entries (player-facing).</footer>
+  </div>
+  <script>
+    const DATA = [{"slash_group": "gspn_achievements", "name": "badges", "description": "Collection milestones (computed live from your inventory)", "group_var": "gspn_achievements_g"}, {"slash_group": "gspn_albums", "name": "complete", "description": "Catalog albums/sets you are closest to finishing (not custom /gspn_cards albums)", "group_var": "gspn_albums_hub_g"}, {"slash_group": "gspn_auction", "name": "bid", "description": "Place a bid on an active GSPN auction", "group_var": "gspn_auction_g"}, {"slash_group": "gspn_auction", "name": "close", "description": "[Admin] Force-close an active auction now", "group_var": "gspn_auction_g"}, {"slash_group": "gspn_auction", "name": "start", "description": "[Admin] Start a public GSPN auction", "group_var": "gspn_auction_g"}, {"slash_group": "gspn_border", "name": "presets", "description": "Lists valid neon border style IDs for the upgrade shop + how preview/buy works.", "group_var": "gspn_border_g"}, {"slash_group": "gspn_cards", "name": "binder", "description": "View your card binder by rarity or model", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "buy_card", "description": "Buy a single card of a specific rarity", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "give", "description": "Gift a card to another user. Admins can gift from the catalog without owning the card.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "grade", "description": "Authenticate & slab-grade one GSPN card copy (GSP case, PSA-style subgrades)", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "hof", "description": "Add Hall of Fame cards (image, url, or zip).", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "holiday", "description": "Get 1 random holiday-themed card (Halloween or Xmas). Uses the event set if an admin has built one.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "inventory", "description": "Show GSPN card inventory (25 per page)", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "pack_open", "description": "Open a GSPN card pack.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "rename", "description": "Rename one owned card and optionally fix its set/album globally.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "replace", "description": "Broken (gradient) cards for a model — choose Replace, Repair, or Sell (2×)", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "sell", "description": "Sell a GSPN card by ID.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "sell_all", "description": "Sell all cards in your inventory (optional: only cards matching a model name)", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "sell_recent", "description": "Sell every copy from your most recent pack open (guide value each, by copy id).", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "slabs", "description": "Browse your GSP-graded GSPN card slabs (mini case grid, 6 per page)", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "trade", "description": "Trade cards and/or GSPN credits with another user (they tap Accept).", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "view", "description": "View a card by name/ID or model; optional album:true binder for one set", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards", "name": "wallet", "description": "Show your GSPN wallet balance.", "group_var": "gspn_cards_g"}, {"slash_group": "gspn_cards albums", "name": "add", "description": "Add more owned cards to an existing custom album", "group_var": "gspn_cards_albums_g"}, {"slash_group": "gspn_cards albums", "name": "create", "description": "Create/replace a custom album from multiple owned cards", "group_var": "gspn_cards_albums_g"}, {"slash_group": "gspn_cards albums", "name": "remove", "description": "Remove cards from a custom album", "group_var": "gspn_cards_albums_g"}, {"slash_group": "gspn_cards albums", "name": "view", "description": "View one of your custom GSPN albums", "group_var": "gspn_cards_albums_g"}, {"slash_group": "gspn_cards extras", "name": "effects", "description": "View your discovered card effects", "group_var": "gspn_cards_extras_g"}, {"slash_group": "gspn_cards extras", "name": "help", "description": "Open the interactive GSPN help panel.", "group_var": "gspn_cards_extras_g"}, {"slash_group": "gspn_cards extras", "name": "privacy", "description": "Toggle inventory privacy", "group_var": "gspn_cards_extras_g"}, {"slash_group": "gspn_cards extras", "name": "recent", "description": "List GSPN cards you pulled in a time window (uses pull timestamps)", "group_var": "gspn_cards_extras_g"}, {"slash_group": "gspn_cards favorites", "name": "fav", "description": "Add one owned card to your GSPN favorites (ID or name)", "group_var": "gspn_cards_favorites_g"}, {"slash_group": "gspn_cards favorites", "name": "favorites", "description": "Alias: add one owned card to favorites (same as /gspn_cards favorites fav)", "group_var": "gspn_cards_favorites_g"}, {"slash_group": "gspn_cards favorites", "name": "list_favs", "description": "List your GSPN favorite cards", "group_var": "gspn_cards_favorites_g"}, {"slash_group": "gspn_cards favorites", "name": "unfav", "description": "Remove one card from your GSPN favorites", "group_var": "gspn_cards_favorites_g"}, {"slash_group": "gspn_cards shop", "name": "browse", "description": "Browse standard, premium, and rarity-case packs (cutout ZIP packs use /gspn_cutout shop).", "group_var": "gspn_cards_shop_g"}, {"slash_group": "gspn_cards shop", "name": "models", "description": "7 cards for one model: optional fixed rarity or random Standard odds ($10k / $15k).", "group_var": "gspn_cards_shop_g"}, {"slash_group": "gspn_cards shop", "name": "seasonal", "description": "Halloween (HC) and Christmas (CHRC) event packs — uses your admin-built holiday card sets.", "group_var": "gspn_cards_shop_g"}, {"slash_group": "gspn_cards tools", "name": "trade_search", "description": "Suggest trades: your duplicate IDs they are missing, and vice versa", "group_var": "gspn_cards_tools_g"}, {"slash_group": "gspn_cutout", "name": "background", "description": "Set or clear your image behind cutout windows (your binder and /gspn_cutout pull renders).", "group_var": "gspn_cutout_g"}, {"slash_group": "gspn_cutout", "name": "force_cutout", "description": "Use the magazine cutout art window (inner background) even when a card has no bg_cutout flag.", "group_var": "gspn_cutout_g"}, {"slash_group": "gspn_cutout", "name": "pull", "description": "Free cutout-pack pull: unique master cards per request, full render, added to inventory.", "group_var": "gspn_cutout_g"}, {"slash_group": "gspn_cutout", "name": "remove", "description": "[Admin] Remove a cutout pack, delete its cards, and strip them from all inventories.", "group_var": "gspn_cutout_g"}, {"slash_group": "gspn_cutout", "name": "shop", "description": "Browse and open cutout ZIP packs (wallet) — separate from the main GSPN shop.", "group_var": "gspn_cutout_g"}, {"slash_group": "gspn_event", "name": "binder", "description": "View only your event cards in binder format", "group_var": "gspn_event_g"}, {"slash_group": "gspn_event", "name": "next", "description": "Show current event and next random event start time", "group_var": "gspn_event_g"}, {"slash_group": "gspn_favs", "name": "favorite_view", "description": "Slideshow through your favorites with full card renders (Prev / Next)", "group_var": "gspn_favs_g"}, {"slash_group": "gspn_holiday", "name": "binder", "description": "Holiday binder: ``holiday_`` event cards + HC/CHRC only (no other event cards)", "group_var": "gspn_holiday_g"}, {"slash_group": "gspn_holiday", "name": "card", "description": "Get 1 random holiday-themed card (Halloween or Xmas).", "group_var": "gspn_holiday_g"}, {"slash_group": "gspn_holiday", "name": "clear", "description": "[Admin] Empty holiday event JSON + purge HC/CHRC copies from inventories.", "group_var": "gspn_holiday_g"}, {"slash_group": "gspn_info", "name": "model", "description": "Show how many images the bot has for a model", "group_var": "gspn_info_g"}, {"slash_group": "gspn_job", "name": "buy_upgrade", "description": "Purchase the next level of a shop meta-upgrade (wallet cost, permanent).", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "chain", "description": "View your full business chain: all branches, staff, and totals.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "claim", "description": "Claim passive shop earnings into your wallet.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "employees", "description": "View your current branch staff and employee shop.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "fire", "description": "Fire employees from the selected branch.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "hire", "description": "Hire employees for the selected branch.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "leaderboards", "description": "Top chains by business revenue, staff count, and branch count.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "open_branch", "description": "Open a new store location in your chain.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "rename_branch", "description": "Rename one of your branches.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "rename_chain", "description": "Rename your overall store chain.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "restock", "description": "Buy simulated stock for your passive shop.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "sales", "description": "View recent passive shop sales log.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "select_branch", "description": "Select which branch your job commands target.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "shop_tag", "description": "Cosmetic shop sign — shown only on /gspn_job status; does not change earnings or simulation.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "start", "description": "Start a passive shop job (card or magazine).", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "status", "description": "View your passive shop status and earnings.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "upgrades", "description": "View passive shop meta-upgrades (permanent bonuses, auto-deposit, auto-restock).", "group_var": "gspn_job_group"}, {"slash_group": "gspn_job", "name": "view_upgrades", "description": "Detailed upgrade sheet: levels, next prices, and what each line does for your shop.", "group_var": "gspn_job_group"}, {"slash_group": "gspn_leaderboard", "name": "board", "description": "Global leaderboard (respects inventory privacy)", "group_var": "gspn_leaderboard_g"}, {"slash_group": "gspn_market", "name": "buy", "description": "Buy a card from the market", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_market", "name": "list", "description": "List current market listings", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_market", "name": "listings", "description": "Show market listings. Optionally show listings for a specific user.", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_market", "name": "remove", "description": "Remove a card listing from the market and return it to the seller's inventory.", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_market", "name": "sell", "description": "List a card for sale (by name, ID, or binder number)", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_market", "name": "sell_model", "description": "Bulk-list all owned cards matching a model name", "group_var": "gspn_card_market_g"}, {"slash_group": "gspn_progress", "name": "progress", "description": "Your collection totals, rarity mix, top models, event pulls, catalog completion %", "group_var": "gspn_progress_g"}, {"slash_group": "gspn_rewards", "name": "daily", "description": "Claim your daily reward", "group_var": "gspn_rewards_g"}, {"slash_group": "gspn_rewards", "name": "daily_wheel", "description": "Spin the daily GSPN wheel (credits + GSPN rarity cases)", "group_var": "gspn_rewards_g"}, {"slash_group": "gspn_rewards", "name": "weekly", "description": "Claim your weekly reward", "group_var": "gspn_rewards_g"}, {"slash_group": "gspn_sell", "name": "duplicates", "description": "Sell duplicate GSPN copies while keeping one best copy per card/art group.", "group_var": "gspn_sell_g"}, {"slash_group": "gspn_shop", "name": "holiday", "description": "Holiday shop: HC/CHRC event packs, $10k model strips, and notes for Signature (SGN) packs.", "group_var": "gspn_shop_g"}, {"slash_group": "gspn_shop", "name": "studios", "description": "7 cards from albums/sets matching studio text (e.g. Brazzers, Ultimate Surrender).", "group_var": "gspn_shop_g"}, {"slash_group": "gspn_shop", "name": "upgrades", "description": "Upgrade shop: bulk rarity jumps, effects, neon borders, + /gspn_upgrade links (wallet).", "group_var": "gspn_shop_g"}, {"slash_group": "gspn_showcase", "name": "flex", "description": "Image grid of your rarest / best slab / event-highlight cards (top picks)", "group_var": "gspn_showcase_g"}, {"slash_group": "gspn_upgrade", "name": "daily", "description": "Once per day: free random multi-step rarity upgrade (chance to hit UR)", "group_var": "gspn_upgrade_group"}, {"slash_group": "gspn_upgrade", "name": "info", "description": "Card upgrader — prices, ladder, and daily odds", "group_var": "gspn_upgrade_group"}, {"slash_group": "gspn_upgrade", "name": "paid", "description": "Pay credits to upgrade a card by one rarity tier (max UR)", "group_var": "gspn_upgrade_group"}, {"slash_group": "gspn_wiki", "name": "model", "description": "GSPN profile: model stats and bio from the catalog page (no gallery fetch)", "group_var": "gspn_wiki_g"}];
+    const q = document.getElementById("q");
+    function norm(s) { return (s || "").toLowerCase(); }
+    q.addEventListener("input", () => {
+      const v = norm(q.value);
+      document.querySelectorAll(".cmd").forEach((el) => {
+        const hay = el.getAttribute("data-search") || "";
+        el.classList.toggle("hidden", v && !hay.includes(v));
+      });
+      document.querySelectorAll(".block").forEach((sec) => {
+        const vis = sec.querySelectorAll(".cmd:not(.hidden)").length;
+        sec.style.display = vis ? "" : "none";
+      });
+    });
+  </script>
+</body>
+</html>
